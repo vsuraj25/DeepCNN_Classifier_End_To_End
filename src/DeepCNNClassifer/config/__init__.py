@@ -1,0 +1,1 @@
+from DeepCNNClassifer.config.configuration import ConfigurationManager
