@@ -13,9 +13,9 @@ list_of_files = [
     f'src/{package_name}/constants/__init__.py',
     f'src/{package_name}/__init__.py',
     'configs/config.yaml',
-    "test/__init__.py",
-    'test/unit/__init__.py',
-    'test/integration/__init__.py'
+    "tests/__init__.py",
+    'tests/unit/__init__.py',
+    'tests/integration/__init__.py'
     'dvc.yaml',
     'params.yaml',
     'init_setup.sh',

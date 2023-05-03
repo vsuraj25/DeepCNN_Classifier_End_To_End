@@ -1,13 +1,13 @@
-import os, sys
 from DeepCNNClassifer.utils import *
 from DeepCNNClassifer.constants import *
 from DeepCNNClassifer.entity.config_entity import DataIngestionConfig
 
+
 class ConfigurationManager:
     def __init__(
             self,
-            config_path = CONFIG_FILE_PATH,
-            params_path = PARAMS_FILE_PATH
+            config_path=CONFIG_FILE_PATH,
+            params_path=PARAMS_FILE_PATH
     ):
         self.config = read_yaml(config_path)
         self.params = read_yaml(params_path)
@@ -19,9 +19,9 @@ class ConfigurationManager:
         create_directories([config.root_dir])
 
         data_ingestion_config = DataIngestionConfig(
-            root_dir = config.root_dir,
-            source_url = config.source_url,
-            local_data_file = config.local_data_file,
-            unzip_dir = config.unzip_dir
+            root_dir=config.root_dir,
+            source_url=config.source_url,
+            local_data_file=config.local_data_file,
+            unzip_dir=config.unzip_dir
         )
         return data_ingestion_config
