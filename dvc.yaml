@@ -1,0 +1,8 @@
+stages:
+  data_ingestion:
+    cmd: python src/DeepCNNClassifer/pipeline/stage_1_Data_Ingestion.py
+    deps: 
+      - src/DeepCNNClassifer/pipeline/stage_1_Data_Ingestion.py
+      - configs/config.yaml
+    outs:
+      - artifacts/data_ingestion/PetImages
