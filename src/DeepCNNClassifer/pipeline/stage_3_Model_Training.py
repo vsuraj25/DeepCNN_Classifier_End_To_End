@@ -3,7 +3,6 @@ from DeepCNNClassifer.components.model_training import ModelTraining
 from DeepCNNClassifer.config import ConfigurationManager
 from DeepCNNClassifer import logger
 
-
 def main():
     config = ConfigurationManager()
     prepare_base_model_config = config.get_prepare_callback_config()
