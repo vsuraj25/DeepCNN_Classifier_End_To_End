@@ -170,3 +170,4 @@ artifacts/prepare_callbacks/tensorboard_log_dir/tb_logs_at_2023-05-12-00-34-05/t
 artifacts/prepare_callbacks/tensorboard_log_dir/tb_logs_at_2023-05-12-13-58-57/train/events.out.tfevents.1683880141.VSURAJ25.9244.0.v2
 artifacts/prepare_callbacks/tensorboard_log_dir/tb_logs_at_2023-05-12-13-58-57/validation/events.out.tfevents.1683880659.VSURAJ25.9244.1.v2
 artifacts/training/model.h5
+artifacts/prepare_callbacks/tensorboard_log_dir/tb_logs_at_2023-05-12-15-22-38/train/events.out.tfevents.1683885163.VSURAJ25.8040.0.v2
