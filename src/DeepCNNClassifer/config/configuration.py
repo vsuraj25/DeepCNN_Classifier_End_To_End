@@ -1,6 +1,8 @@
 from DeepCNNClassifer.utils import *
 from DeepCNNClassifer.constants import *
-from DeepCNNClassifer.entity.config_entity import (DataIngestionConfig, PrepareBaseModelConfig, PrepareCallbackConfig, ModelTrainingConfig)
+from DeepCNNClassifer.entity.config_entity import (DataIngestionConfig, PrepareBaseModelConfig, 
+                                                   PrepareCallbackConfig, ModelTrainingConfig,
+                                                   ModelEvaluationConfig)
 
 
 class ConfigurationManager:
@@ -79,3 +81,12 @@ class ConfigurationManager:
             params_image_size = params.IMAGE_SIZE
         )
         return model_training_config
+
+    def get_evaluation_config(self) -> ModelEvaluationConfig:
+        model_evaluation_config = ModelEvaluationConfig(
+            path = self.config.model_training.trained_model_path,
+            training_data= self.config.data_ingestion.unzip_dir,
+            params_img_size= self.params.IMAGE_SIZE,
+            params_batch_size= self.params.BATCH_SIZE
+        )
+        return model_evaluation_config
