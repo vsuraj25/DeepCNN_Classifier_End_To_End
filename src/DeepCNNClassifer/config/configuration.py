@@ -1,6 +1,6 @@
 from DeepCNNClassifer.utils import *
 from DeepCNNClassifer.constants import *
-from DeepCNNClassifer.entity.config_entity import (DataIngestionConfig, PrepareBaseModelConfig)
+from DeepCNNClassifer.entity.config_entity import (DataIngestionConfig, PrepareBaseModelConfig, PrepareCallbackConfig, ModelTrainingConfig)
 
 
 class ConfigurationManager:
@@ -44,4 +44,38 @@ class ConfigurationManager:
         )
         return prepare_base_model_config
     
+    def get_prepare_callback_config(self) -> PrepareCallbackConfig:
+        config = self.config.prepare_callback
+        model_checkpoint_dir = os.path.dirname(config.checkpoint_model_filepath)
+
+        create_directories([
+            Path(model_checkpoint_dir),
+            Path(config.tensorboard_root_log_dir)
+        ])
+
+        prepare_callback_config = PrepareCallbackConfig(
+            root_dir = Path(config.root_dir),
+            tensorboard_root_log_dir = Path(config.tensorboard_root_log_dir),
+            checkpoint_model_filepath = Path(config.checkpoint_model_filepath)
+        )
+        return prepare_callback_config
     
+    def get_model_training_config(self) -> ModelTrainingConfig:
+        model_training_config = self.config.model_training
+        prepare_base_model_config =  self.config.prepare_base_model
+        params = self.params
+        training_data_path = os.path.join(self.config.data_ingestion.unzip_dir, "PetImages")
+        
+        create_directories([model_training_config.root_dir])
+
+        model_training_config = ModelTrainingConfig(
+            root_dir = Path(model_training_config.root_dir),
+            trained_model_path = Path(model_training_config.trained_model_path),
+            updated_base_model_path = Path(prepare_base_model_config.updated_base_model),
+            training_data = Path(training_data_path),
+            params_epoch = params.EPOCHS,
+            params_batch_size = params.BATCH_SIZE,
+            params_is_augmented = params.AUGMENTATION,
+            params_image_size = params.IMAGE_SIZE
+        )
+        return model_training_config
