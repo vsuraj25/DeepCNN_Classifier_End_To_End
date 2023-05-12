@@ -21,7 +21,7 @@ stages:
     outs:
       - artifacts/prepare_base_model
 
-    model_training:
+  model_training:
     cmd: python src/DeepCNNClassifer/pipeline/stage_3_Model_Training.py
     deps: 
       - src/DeepCNNClassifer/pipeline/stage_3_Model_Training.py
