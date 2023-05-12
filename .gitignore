@@ -162,3 +162,11 @@ cython_debug/
 .vscode
 *.jpg
 *.zip
+artifacts/prepare_base_model/base_model_updated.h5
+artifacts/prepare_base_model/base_model.h5
+artifacts/prepare_callbacks/checkpoint_dir/model.h5
+artifacts/prepare_callbacks/tensorboard_log_dir/tb_logs_at_2023-05-11-23-53-32/train/events.out.tfevents.1683829414.VSURAJ25.908.0.v2
+artifacts/prepare_callbacks/tensorboard_log_dir/tb_logs_at_2023-05-12-00-34-05/train/events.out.tfevents.1683831849.VSURAJ25.11640.0.v2
+artifacts/prepare_callbacks/tensorboard_log_dir/tb_logs_at_2023-05-12-13-58-57/train/events.out.tfevents.1683880141.VSURAJ25.9244.0.v2
+artifacts/prepare_callbacks/tensorboard_log_dir/tb_logs_at_2023-05-12-13-58-57/validation/events.out.tfevents.1683880659.VSURAJ25.9244.1.v2
+artifacts/training/model.h5
