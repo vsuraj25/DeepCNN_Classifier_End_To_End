@@ -16,6 +16,8 @@ if uploaded_file is not None:
     results = model.predict(img_array)
     argmax_index = np.argmax(results, axis = 1)
     if argmax_index[0] == 0:
-        st.image(img, caption = "Predicted : Cat")
+        st.image(img, use_column_width="always")
+        st.markdown("<h1 style='text-align: center; color: green;'><b>Predicted</b> : Cat</h1>", unsafe_allow_html=True)
     else:
-        st.image(img, caption = "Predicted : Dog")
+        st.image(img, use_column_width="always")
+        st.markdown("<h1 style='text-align: center; color: green;'><b>Predicted</b> : Dog</h1>", unsafe_allow_html=True)
