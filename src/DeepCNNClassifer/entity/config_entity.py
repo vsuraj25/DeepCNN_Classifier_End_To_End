@@ -44,3 +44,5 @@ class ModelEvaluationConfig:
     training_data : Path
     params_img_size : list
     params_batch_size : int
+    mlflow_uri : str
+    all_params : dict
