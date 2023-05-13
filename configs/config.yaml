@@ -19,3 +19,4 @@ prepare_callback:
 model_training : 
   root_dir : artifacts/training
   trained_model_path : artifacts/training/model.h5
+  prediction_model_path : prediction_service/model.h5
