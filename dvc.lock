@@ -85,8 +85,8 @@ stages:
       md5: 5f295b7a9c71398db9c3ee15315f4882
       size: 828
     - path: src/DeepCNNClassifer/pipeline/stage_4_Model_Evaluation.py
-      md5: 9dd6946d88b6cabfe4423cacb70e3841
-      size: 669
+      md5: 3b3f9780ff6eb953e6ba382577a486c4
+      size: 703
     params:
       params.yaml:
         BATCH_SIZE: 16
@@ -96,5 +96,5 @@ stages:
         - 3
     outs:
     - path: scores.json
-      md5: b7cfbca4c732e5106b72ce1133b89f81
+      md5: 276df8ed6d7edf90a448eea77630bc02
       size: 73

@@ -31,6 +31,7 @@ class ModelTraining:
             **datagenerator_kwargs
         )
 
+        logger.info(f"Generating validation data using flow from directory...")
         self.valid_generator = valid_data_generator.flow_from_directory(
             directory=self.config.training_data,
             subset='validation',
@@ -53,6 +54,7 @@ class ModelTraining:
         else:
             training_datagenerator= valid_data_generator
 
+        logger.info(f"Generating Training data using flow from directory...")
         self.train_generator = training_datagenerator.flow_from_directory(
             directory=self.config.training_data,
             subset = "training",
@@ -77,7 +79,7 @@ class ModelTraining:
             validation_data = self.valid_generator,
             callbacks = callback_list
         )
-        logger.info(f"Training the model for {self.config.params_epoch} epochs....")
+        logger.info(f"Training completed with {self.config.params_epoch} epochs....")
 
         self.save_model(
             path = self.config.trained_model_path, 
