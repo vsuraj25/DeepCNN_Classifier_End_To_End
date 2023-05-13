@@ -249,3 +249,5 @@ mlruns/0/bda2ffd3877c4cbdbba13fd7a87e1f90/tags/mlflow.source.name
 mlruns/0/bda2ffd3877c4cbdbba13fd7a87e1f90/tags/mlflow.source.type
 mlruns/0/bda2ffd3877c4cbdbba13fd7a87e1f90/tags/mlflow.user
 src/DeepCNNClassifer/sec.py
+artifacts/prepare_callbacks/tensorboard_log_dir/tb_logs_at_2023-05-13-18-04-30/train/events.out.tfevents.1683981277.VSURAJ25.25680.0.v2
+artifacts/prepare_callbacks/tensorboard_log_dir/tb_logs_at_2023-05-13-18-04-30/validation/events.out.tfevents.1683981549.VSURAJ25.25680.1.v2
