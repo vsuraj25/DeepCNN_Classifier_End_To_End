@@ -6,7 +6,7 @@ import numpy as np
 
 model = tf.keras.models.load_model("prediction_service/model.h5")
 
-uploaded_file = st.file_uploader("Choose a file")
+uploaded_file = st.file_uploader("Upload an image of dog or cat for classification")
 if uploaded_file is not None:
     # To read file as bytes:
     img = Image.open(uploaded_file)
