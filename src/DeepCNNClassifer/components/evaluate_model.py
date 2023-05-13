@@ -1,13 +1,19 @@
 import tensorflow as tf
 from DeepCNNClassifer.entity.config_entity import ModelEvaluationConfig
 from DeepCNNClassifer.utils import *
-from DeepCNNClassifer import logger
+from DeepCNNClassifer.sec import *
+import mlflow
+import mlflow.keras
+from urllib.parse import urlparse
 from pathlib import Path
 
 
 class ModelEvaluation:
     def __init__(self, config: ModelEvaluationConfig):
         self.config = config
+        os.environ["MLFLOW_TRACKING_URI"] = MLFLOW_TRACKING_URI
+        os.environ["MLFLOW_TRACKING_USERNAME"] = MLFLOW_TRACKING_USERNAME
+        os.environ["MLFLOW_TRACKING_PASSWORD"] = MLFLOW_TRACKING_PASSWORD
 
     def _valid_generator(self):
         
@@ -38,9 +44,9 @@ class ModelEvaluation:
         return tf.keras.models.load_model(path)
 
     def evaluate(self):
-        model = self.load_model(self.config.path)
+        self.model = self.load_model(self.config.path)
         self._valid_generator()
-        self.score = model.evaluate(self.valid_generator)
+        self.score = self.model.evaluate(self.valid_generator)
 
     def save_scores(self):
         scores = {
@@ -48,3 +54,17 @@ class ModelEvaluation:
             "accuracy" : self.score[1]
         }
         return save_json(path = Path('scores.json'), data = scores)
+    
+    def log_into_mlflow(self):
+        mlflow.set_registry_uri(self.config.mlflow_uri)
+        tracking_uri_type_store = urlparse(mlflow.get_tracking_uri()).scheme
+        with mlflow.start_run():
+            mlflow.log_params(self.config.all_params)
+            mlflow.log_metrics({
+                "loss" : self.score[0],
+                "accuracy" : self.score[1]
+            })
+            if tracking_uri_type_store != "file":
+                mlflow.keras.log_model(self.model, "model", registered_model_name = "VGG16Model")
+            else:
+                mlflow.keras.log_model(self.model, "model")

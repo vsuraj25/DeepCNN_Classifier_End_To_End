@@ -9,6 +9,7 @@ def main():
     evaluation = ModelEvaluation(validation_config)
     evaluation.evaluate()
     evaluation.save_scores()
+    evaluation.log_into_mlflow()
 
 if __name__ == '__main__':
     try:
